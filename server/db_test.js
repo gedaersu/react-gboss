@@ -45,35 +45,35 @@ function testSave() {
     name: 'Jack',
     pwd: '123',
     type: 'genius',
-    avater: 'boy',
+    avatar: 'boy',
   }
   const userModel = new UserModel(user)
   userModel.save(function (err, user) {
     console.log('save()', err, user)
   })
 }
-testSave()
+ // testSave()
 // 3.2. 通过 Model 的 find()/findOne()查询多个或一个数据
 function testFind() {
-  UserModel.find(/*{_id: 'xxxxxx'},*/function (err, users) {
+  UserModel.find(function (err, users) {
     console.log('find()', err, users)
   })
-  UserModel.findOne({_id: 'xxxxxx'}, function (err, user) {
+  UserModel.findOne({_id: '5e986c2bb767b4251c19016e'}, function (err, user) {
     console.log('findOne()', err, user)
   })
 }
 testFind()
 // 3.3. 通过 Model 的 findByIdAndUpdate()更新某个数据
 function testUpdate() {
-  UserModel.findByIdAndUpdate({_id: 'xxx'},{name:'yyy'},/*true,*/function (err, user) {
+  UserModel.findByIdAndUpdate({_id: '5e986c2bb767b4251c19016e'},{name:'yyy'},/*true,*/function (err, user) {
     console.log('findByIdAndUpdate()', err, user)
   })
 }
-testUpdate()
+// testUpdate()
 // 3.4. 通过 Model 的 remove()删除匹配的数据
 function testDel() {
-  UserModel.remove({_id:'xxxx'}, function (err, result) {
+  UserModel.remove({_id:'5e9855c413ab8213946bf218'}, function (err, result) {
     console.log('remove()', err, result)
   })
 }
-testDel()
+// testDel()
