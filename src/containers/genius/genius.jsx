@@ -1,8 +1,24 @@
 import React, {Component} from 'react'
-export default class Genius extends Component {
+import {connect} from 'react-redux'
+
+import {getUserList} from '../../redux/actions'
+import UserList from '../../components/user-list/user-list'
+
+class Genius extends Component {
+
+  componentDidMount() {
+    //获取userList
+    this.props.getUserList('boss')
+  }
+
   render() {
     return (
-      <div>BOSS列表</div>
+      <UserList userList={this.props.userList}/>
     );
   }
 }
+
+export default connect(
+  state => ({userList: state.userList}),
+  {getUserList}
+)(Genius)

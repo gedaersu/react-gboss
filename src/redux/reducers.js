@@ -1,10 +1,16 @@
 /*根据老的state和action产生新的state返回*/
 import {combineReducers} from 'redux'
-import {AUTH_SUCCESS, ERROR_MSG, RECEIVE_USER, RESET_USER} from './action-types'
+import {
+  AUTH_SUCCESS,
+  ERROR_MSG,
+  RECEIVE_USER,
+  RESET_USER,
+  RECEIVE_USER_LIST
+} from './action-types'
 
 import {getPath} from '../utils'
 
-const initUser ={
+const initUser = {
   name: '',
   msg: '',
   type:'',
@@ -27,6 +33,18 @@ function user(state = initUser, action) {
   }
 }
 
+const initUserList = []
+
+function userList(state = initUserList, action) {
+  switch (action.type) {
+    case RECEIVE_USER_LIST:
+      return action.data
+    default:
+      return state
+  }
+}
+
 export default combineReducers({
-  user
+  user,
+  userList
 })

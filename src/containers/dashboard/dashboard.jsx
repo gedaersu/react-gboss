@@ -74,12 +74,12 @@ class Dashboard extends Component {
       if (pathname === '/') {
         const path = getPath(user.type, user.avatar)
         return <Redirect to={path}/>
-        //指定那个nav被隐藏
-        if (user.type === 'boss') {
-          this.navList[1].hide = true
-        } else {
-          this.navList[0].hide = true
-        }
+      }
+      //指定那个nav被隐藏
+      if (user.type === 'boss') {
+        this.navList[1].hide = true
+      } else {
+        this.navList[0].hide = true
       }
     }
 

@@ -27,6 +27,7 @@ router.post('/register', function (req, res) {
   })
 
 })
+
   //登陆路由
 router.post('/login', function (req, res) {
   const {name, pwd} = req.body
@@ -39,6 +40,7 @@ router.post('/login', function (req, res) {
     }
   })
 })
+
   //更新用户信息
 router.post('/update', function (req, res) {
   const userid = req.cookies.userid
@@ -56,6 +58,7 @@ router.post('/update', function (req, res) {
     }
   })
 })
+
   //根据cookie获取对应user
 router.get('/user', function (req, res) {
   //根据cookie中的userid获取用户
@@ -76,6 +79,14 @@ router.get('/user', function (req, res) {
     }
   })
 
+})
+
+  //根据type获取user列表
+router.get('/userlist', function (req, res) {
+  const type = req.query.type
+  UserModel.find({type}, filter, function (err, users) {
+    res.send({code: 0, data: users})
+  })
 })
 //向外暴露路由器
 module.exports = router

@@ -3,8 +3,6 @@ import React, {Component} from 'react'
 import {List, Grid} from 'antd-mobile'
 import PropTypes from 'prop-types'
 
-import '../../assets/css/index.less'
-
 export default class AvatarSelector extends Component {
 
   static propTypes = {setAvatar: PropTypes.func.isRequired}
@@ -16,7 +14,7 @@ export default class AvatarSelector extends Component {
     for (var i = 0; i < 15; i++) {
       const text = `头像${i + 1}`
       //`../../assets/imgs/${text}.png`
-      this.avatarList.push({text, icon: require(`./imgs/${text}.png`)})
+      this.avatarList.push({text, icon: require(`../../assets/imgs/${text}.png`)})
     }
   }
 
