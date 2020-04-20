@@ -11,6 +11,8 @@ import Register from './containers/register/register'
 import Dashboard from './containers/dashboard/dashboard'
 import store from './redux/store'
 
+import './assets/css/index.less'
+
 ReactDOM.render((
   <Provider store={store}>
     <BrowserRouter>

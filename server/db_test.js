@@ -42,7 +42,7 @@ const UserModel = mongoose.model('user', userSchema)
 // 3.1. 通过 Model 实例的 save()添加数据
 function testSave() {
   const user = {
-    name: 'Jack',
+    name: 'Back',
     pwd: '123',
     type: 'genius',
     avatar: 'boy',
@@ -62,7 +62,7 @@ function testFind() {
     console.log('findOne()', err, user)
   })
 }
-testFind()
+// testFind()
 // 3.3. 通过 Model 的 findByIdAndUpdate()更新某个数据
 function testUpdate() {
   UserModel.findByIdAndUpdate({_id: '5e986c2bb767b4251c19016e'},{name:'yyy'},/*true,*/function (err, user) {

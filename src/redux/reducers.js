@@ -1,17 +1,32 @@
 /*根据老的state和action产生新的state返回*/
 import {combineReducers} from 'redux'
+import {AUTH_SUCCESS, ERROR_MSG, RECEIVE_USER, RESET_USER} from './action-types'
 
-function xxx(state = 0, action) {
+import {getPath} from '../utils'
 
-  return state
+const initUser ={
+  name: '',
+  msg: '',
+  type:'',
+  redirectTo: ''
 }
 
-function yyy(state = {}, action) {
-
-  return state
+function user(state = initUser, action) {
+  switch (action.type) {
+    case AUTH_SUCCESS: //成功 user
+      const user = action.data
+      return {...user, redirectTo: getPath(user.type, user.avatar)}
+    case ERROR_MSG: //失败 msg
+      return {...state, msg: action.data}
+    case RECEIVE_USER:
+      return action.data
+    case RESET_USER:
+      return {...initUser, msg: action.data}
+    default:
+      return state
+  }
 }
 
 export default combineReducers({
-  xxx,
-  yyy
+  user
 })

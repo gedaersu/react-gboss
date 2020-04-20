@@ -1,12 +1,15 @@
 /*登录*/
 import React, {Component} from 'react'
-import {NavBar,WingBlank,List,InputItem,Button} from 'antd-mobile'
+import {connect} from 'react-redux'
+import {NavBar, WingBlank, List, InputItem, Button} from 'antd-mobile'
+import {Redirect} from 'react-router'
+
+import {relogin} from '../../redux/actions'
 
 import Logo from "../../components/logo/logo";
 
 
-
-export default class Register extends Component {
+class Relogin extends Component {
 
   state = {
     name: '',
@@ -24,18 +27,23 @@ export default class Register extends Component {
   }
 
   handleLogin = () => {
-    console.log(this.state)
+    this.props.relogin(this.state)
   }
 
   render() {
+    const {redirectTo, msg} = this.props.user
+    if (redirectTo) {
+      return <Redirect to={redirectTo}/>
+    }
     return (
       <div>
         <NavBar>苏 总 直 聘</NavBar>
         <Logo/>
         <WingBlank>
+          {msg ? <p className='error-msg'>{msg}</p> : null}
           <List>
-            <InputItem onChange={(val) => this.handleChange('name',val)}>用&nbsp;&nbsp;户&nbsp;名：</InputItem>
-            <InputItem type="password" onChange={(val) => this.handleChange('pwd',val)}>输入密码：</InputItem>
+            <InputItem onChange={(val) => this.handleChange('name', val)}>用&nbsp;&nbsp;户&nbsp;名：</InputItem>
+            <InputItem type="password" onChange={(val) => this.handleChange('pwd', val)}>输入密码：</InputItem>
             <Button type="primary" onClick={this.handleLogin}>登录</Button>
             <Button onClick={this.goRegister}>注册账户</Button>
           </List>
@@ -44,4 +52,9 @@ export default class Register extends Component {
     );
   }
 }
+
+export default connect(
+  state => ({user: state.user}),
+  {relogin}
+)(Relogin)
 
