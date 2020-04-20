@@ -6,10 +6,32 @@ import {withRouter} from 'react-router-dom'
 
 const Item = TabBar.Item
 
-export default class extends Component {
+class NavFooter extends Component {
+
+  static propTypes = {
+    navList: PropTypes.array.isRequired
+  }
+
   render() {
+    const navList = this.props.navList.filter(nav => !nav.hide)
+    const {pathname} = this.props.location
     return (
-      <div></div>
-    );
+      <TabBar>
+        {navList.map((nav, index) => (
+          <Item key={nav.path}
+                title={nav.text}
+                icon={{uri: require(`./imgs/${nav.icon}.png`)}}
+                selectedIcon={{uri: require(`./imgs/${nav.icon}-selected.png`)}}
+                selected={pathname === nav.path}
+                onPress={() => {
+                  this.props.history.replace(nav.path)
+                }}
+          />
+        ))
+        }
+      </TabBar>
+    )
   }
 }
+
+export default withRouter(NavFooter)
