@@ -37,7 +37,6 @@ function initIO(userid, dispatch) {
     // if(chatMsg.from===userid || chatMsg.to===userid) {
     //   dispatch(receiveMsg(chatMsg, chatMsg.to === userid))
     // }
-    console.log('服务器发给浏览器', chatMsg)
     dispatch(receiveMsg(chatMsg, userid))
   })
 }
@@ -54,7 +53,6 @@ async function getMsgList(dispatch, userid) {
 export const sendMsg = ({from, to, content}) => {
   return dispatch => {
     io.socket.emit('sendMsg', {from, to, content})
-    console.log("浏览器发给服务器" , {from, to, content})
   }
 }
 

@@ -32,7 +32,6 @@ class BossInfo extends Component {
   }
 
   render() {
-
     const {user} = this.props
     if (user.avatar) {
       return <Redirect to='/boss'/>

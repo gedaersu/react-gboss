@@ -134,12 +134,11 @@ class Chat extends Component {
             value={this.state.content}
             onFocus={() => this.setState({isShow: false})}
             extra={
-              <div>
+              <span>
                 <span style={{marginRight:10}}
-                      onClick={this.changeShow}
-                >😀</span>
+                      onClick={this.changeShow}>❤</span>
                 <span onClick={this.send}>发送</span>
-              </div>
+              </span>
             }
           />
           {
