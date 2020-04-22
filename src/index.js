@@ -13,6 +13,8 @@ import store from './redux/store'
 
 import './assets/css/index.less'
 
+// import './test/ioTest'
+
 ReactDOM.render((
   <Provider store={store}>
     <BrowserRouter>

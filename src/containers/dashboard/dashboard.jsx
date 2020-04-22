@@ -11,6 +11,7 @@ import Genius from '../genius/genius'
 import Boss from '../boss/boss'
 import Msg from '../msg/msg'
 import User from '../user/user'
+import Chat from '../chat/chat'
 import NotFound from '../not-found/not-found'
 import NavFooter from '../../components/nav-footer/nav-footer'
 import {getUser} from '../../redux/actions'
@@ -96,6 +97,7 @@ class Dashboard extends Component {
           <Route path='/boss' component={Boss}/>
           <Route path='/msg' component={Msg}/>
           <Route path='/user' component={User}/>
+          <Route path='/chat/:userid' component={Chat}/>
           <Route component={NotFound}/>
         </Switch>
         {currentNav ? <NavFooter unReadCount={this.props.unReadCount} navList={this.navList}/> : null}
@@ -105,6 +107,6 @@ class Dashboard extends Component {
 }
 
 export default connect(
-  state => ({user: state.user}),
+  state => ({user: state.user, unReadCount: state.chat.unReadCount}),
   {getUser}
 )(Dashboard)

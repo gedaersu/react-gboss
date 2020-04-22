@@ -20,6 +20,7 @@
     "mongoose": "^5.9.9",
     "prop-types": "^15.7.2",
     "proxy": "^1.0.1",
+    "rc-queue-anim": "^1.8.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
@@ -27,7 +28,9 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
     "redux": "^3.7.2",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "socket.io": "^2.3.0",
+    "socket.io-client": "^2.3.0"
   },
   "scripts": {
     "start": "react-app-rewired start",
